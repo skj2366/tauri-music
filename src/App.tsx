@@ -2,15 +2,15 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
-import { open } from '@tauri-apps/api/dialog';
+// import { open } from '@tauri-apps/api/dialog';
 
-const selectFiles = async () => {
-  const selected = await open({
-    multiple: true,
-    filters: [{ name: 'Audio', extensions: ['mp3', 'wav', 'flac'] }],
-  });
-  console.log(selected);
-};
+// const selectFiles = async () => {
+//   const selected = await open({
+//     multiple: true,
+//     filters: [{ name: 'Audio', extensions: ['mp3', 'wav', 'flac'] }],
+//   });
+//   console.log(selected);
+// };
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -52,7 +52,7 @@ function App() {
         />
         <button type="submit">Greet</button>
       </form>
-      <button onClick={selectFiles}>Select Files</button>
+      {/* <button onClick={selectFiles}>Select Files</button> */}
       <p>{greetMsg}</p>
     </main>
   );
