@@ -5,7 +5,7 @@
       "name": "tauri-app",
       "dependencies": {
         "@tailwindcss/vite": "^4.0.14",
-        "@tauri-apps/api": "^2",
+        "@tauri-apps/api": "^2.3.0",
         "@tauri-apps/plugin-dialog": "^2.2.0",
         "@tauri-apps/plugin-fs": "^2.2.0",
         "@tauri-apps/plugin-opener": "^2",
