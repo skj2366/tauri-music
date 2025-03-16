@@ -13,49 +13,63 @@ import "./App.css";
 // };
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex h-screen bg-gray-100">
+      <div className="flex-1 p-8">
+        <SongInfo />
+        <AlbumArt />
+        <ControlBar />
       </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      {/* <button onClick={selectFiles}>Select Files</button> */}
-      <p>{greetMsg}</p>
-    </main>
+    </div>
   );
+}
+
+function SongInfo() {
+  return (
+    <div className="mb-4">
+      <h2 className="text-2xl font-bold text-gray-800">곡 제목</h2>
+      <p className="text-gray-600">아티스트 이름</p>
+    </div>
+  );
+}
+
+function AlbumArt({ url = "" }: { url?: string }) {
+  let albumArtUrl = url;
+  if (!albumArtUrl) albumArtUrl = reactLogo;
+  return (
+    <div
+      className="w-64 h-64 bg-cover bg-center rounded-lg shadow-neumorphism"
+      style={{ backgroundImage: `url(${albumArtUrl})` }}
+    ></div>
+  );
+}
+
+function ControlBar() {
+  return (
+    <div className="flex items-center justify-center mt-8">
+      <Button icon="previous" />
+      <Button icon="play" />
+      <Button icon="next" />
+      <VolumeSlider />
+      <ProgressBar />
+    </div>
+  );
+}
+
+function Button({ icon }: { icon: "play" | "previous" | "next" }) {
+  return (
+    <div className="bg-gray-200 rounded-full p-4 shadow-neumorphism mx-2 active:shadow-neumorphism-active">
+      {icon === "play" ? "▶" : icon === "previous" ? "⏮" : "⏭"}
+    </div>
+  );
+}
+
+function VolumeSlider() {
+  return <input type="range" className="w-24 mx-4" />;
+}
+
+function ProgressBar() {
+  return <input type="range" className="w-64 mx-4" />;
 }
 
 export default App;
