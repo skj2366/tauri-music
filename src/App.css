@@ -18,3 +18,19 @@ input[type="range"]::-webkit-slider-runnable-track {
   background: #e0e0e0;
   box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #ffffff;
 }
+
+.nu-alert {
+  display: flex;
+  font-size: 16px;
+  position: relative;
+  border-radius: 8px;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--text-color);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom)
+    var(--padding-left);
+  --padding-top: 12px;
+  --padding-left: 16px;
+  --padding-right: 16px;
+  --padding-bottom: 12px;
+}

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from '@tauri-apps/plugin-dialog';
+import NeuButton from "./NeuButton";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <div className="flex-1 flex flex-col items-center justify-center">
         <MainPlayer />
       </div>
+      <NeuButton />
     </div>
   );
 }
